@@ -30,12 +30,15 @@
             document.getElementById('pontuacao_h1').innerHTML = localStorage.getItem('unidade_nome')
             document.getElementById('img_logo_unidade').src = localStorage.getItem('unidade_logo')
             const atividades = [
-                { nome: "atividade 1", arte: "atividade_exemplo.png"},
-                { nome: "atividade 2", arte: "atividade_exemplo.png"},
-                { nome: "atividade 3", arte: "atividade_exemplo.png"},
-                { nome: "atividade 4", arte: "atividade_exemplo.png"},
-                { nome: "atividade 5", arte: "atividade_exemplo.png"},
-                { nome: "atividade 6", arte: "atividade_exemplo.png"},
+                { nome: "Quebra Cabeças", arte: "atividade_exemplo.png"},
+                { nome: "Conhece O Uniforme?", arte: "atividade_exemplo.png"},
+                { nome: "Saindo Da Casa De Jó", arte: "atividade_exemplo.png"},
+                { nome: "Campo Minado", arte: "atividade_exemplo.png"},
+                { nome: "Só De Cabeça", arte: "atividade_exemplo.png"},
+                { nome: "Descubra O Nó", arte: "atividade_exemplo.png"},
+                { nome: "Fogos E Fogões", arte: "atividade_exemplo.png"},
+                { nome: "Escapando Pelas Mãos", arte: "atividade_exemplo.png"},
+                { nome: "Cordeiro", arte: "atividade_exemplo.png"},
             ]
             atividades.forEach(atividade => {
                 const produto_div = document.createElement('div');
@@ -46,26 +49,38 @@
                             <p class="title">${atividade.nome}</p>
                             <img src="${atividade.arte}" alt="${atividade.nome}">
                             <p class="subtitle">PONTUAÇÃO:</p>
-                            <button class="btnoper decrement" onclick="alterar_valor('${atividade.nome}','subtrair')">-</button>
+                            <button class="btnoper increment" onclick="alterar_valor('${atividade.nome}','subtrair',100)">-100 pontos</button>
                             <input type="number" class="quantity" value="0" id="pontos${atividade.nome}" readonly>
-                            <button class="btnoper increment" onclick="alterar_valor('${atividade.nome}','somar')">+</button>
+                            <button class="btnoper increment" onclick="alterar_valor('${atividade.nome}','somar',10)">+10 pontos</button>
+                            <button class="btnoper increment" onclick="alterar_valor('${atividade.nome}','somar',50)">+50 pontos</button>
+                            <button class="btnoper increment" onclick="alterar_valor('${atividade.nome}','somar',100)">+100 pontos</button>
                         </div>
                     </div>
                 `;
                 cardsContainer.appendChild(produto_div);
+                if (atividade.nome == "Cordeiro") 
+                {
+                    document.getElementById('pontosCordeiro').value = 800
+                }
             });
         }
         // função para alterar a quantidade
-        function alterar_valor(atividade_nome,operacao) {
+        function alterar_valor(atividade_nome,operacao,qtd_pontos) {
             var pontos = document.getElementById(`pontos${atividade_nome}`)
             // Obtém o valor atual como número
             var valorAtual = parseInt(pontos.value) || 0; // Usa 0 se o valor não for um número
             if (operacao == "subtrair") {
                 if (valorAtual > 0) { // Verifica se pode subtrair
-                    pontos.value = valorAtual - 1; // Decrementa
+                    res = valorAtual - qtd_pontos;
+                    if (res < 0) {
+                        pontos.value = 0; // Decrementa
+                    }
+                    else {
+                        pontos.value = valorAtual - qtd_pontos; // Decrementa
+                    }
                 }
             } else if (operacao == "somar") {
-                pontos.value = valorAtual + 1; // Incrementa
+                pontos.value = valorAtual + qtd_pontos; // Incrementa
             }
         };
         console.log(`UNIDADE APRESENTADA: ${localStorage.getItem('unidade_nome')}`)

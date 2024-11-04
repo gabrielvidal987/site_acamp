@@ -28,7 +28,9 @@ input.quantity {
 }
 .btnoper {
     height: 2.5em;
-    width: 2.5em;
+    width: 10em;
+    margin-bottom: 1em;
+    margin-top: 1em;
     background-color: #fbc806;
     color: #000000;
     font-weight: bold;
