@@ -1,0 +1,48 @@
+/* Estilos para o ranking */
+.ranking {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    background-color: #f9f9f9;
+}
+
+.ranking h2 {
+    text-align: center;
+    color: #333;
+}
+
+.ranking ol {
+    list-style: none;
+    padding: 0;
+}
+
+.ranking li {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+    margin-bottom: 5px;
+    background-color: #e0e0e0;
+    border-radius: 3px;
+    transition: background-color 0.3s ease;
+}
+
+.ranking li:hover {
+    background-color: #d0d0d0;
+}
+
+.ranking .position {
+    font-weight: bold;
+    font-size: 1.2em;
+    color: #4CAF50;
+}
+
+.ranking .name {
+    font-weight: bold;
+    color: #333;
+}
+
+.ranking .points {
+    color: #777;
+}
