@@ -3,62 +3,35 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pontuação Geral</title>
+    <title>LOGIN</title>
+    <!-- Aqui importa uma biblioteca para deixar os itens redimensionados facilmente, principalmente o <section> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- Aqui importa uma biblioteca para a seta do botão de prosseguir -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Aqui importa o css que escrevemos -->
     <link rel="stylesheet" href="index_style.css">
     <style></style>
 </head>
 <body>
-    <div class="container has-text-centered title-pontuacao">
-        <h1>PONTUAÇÃO GERAL</h1>
-    </div>
+    <!-- Section principal contendo os input de nome e senha -->
     <section class="section">
-        <div class="container">
-            <div class="columns is-multiline" id="cards-container">
-                <!-- Os cards serão inseridos aqui -->
-            </div>
+        <div class="container has-text-centered">
+            <label class="lblForm" for="nome">Nome:</label><br>
+            <input type="text" id="nome" placeholder="Digite seu nome...">
+            <br><br>
+            <label class="lblForm" for="senha" id="lbsenha">Senha de acesso:</label><br>
+            <input type="text" id="senha" placeholder="Digite a senha de acesso fornecida...">
+            </br></br>
+        </div>
+    <!-- Div contendo o botão de prosseguir... note que para centralizar o texto com essa biblioteca é só adicionar na classe o "has-text-centered" -->
+        <div class="container has-text-centered">
+        <!-- O botão chama a função "campo_preenchido" que faz a verificação do login e em seguida leva para o score geral -->
+            <button class="button is-primary is-fullwidth is-large" onclick="campo_preenchido()" style="background-color: #ed1c24;">
+                PONTUAÇÃO GERAL <i class="fas fa-arrow-right" style="margin-left: 1em;"></i>
+            </button>
         </div>
     </section>
-    <script>
-        const urlServ = 'http://localhost:3000';
-        // const urlServ = 'http://192.168.1.3:3000';
-        const cardsContainer = document.getElementById('cards-container');
-        function load_itens() {
-            const unidades = [
-                { nome: "Panda",idade_min:10,idade_max:11, logo: "logo_exemplo.png"},
-                { nome: "Aguia Real",idade_min:12,idade_max:13, logo: "logo_exemplo.png"},
-                { nome: "Raposa",idade_min:14,idade_max:14, logo: "logo_exemplo.png"},
-                { nome: "Pantera",idade_min:15,idade_max:15, logo: "logo_exemplo.png"},
-                { nome: "Falcão",idade_min:10,idade_max:11, logo: "logo_exemplo.png"},
-                { nome: "Tigre",idade_min:12,idade_max:13, logo: "logo_exemplo.png"},
-                { nome: "Urso",idade_min:14,idade_max:14, logo: "logo_exemplo.png"},
-                { nome: "Lobo",idade_min:15,idade_max:15, logo: "logo_exemplo.png"},
-            ]
-            unidades.forEach(unidade => {
-                const produto_div = document.createElement('div');
-                produto_div.className = 'column ';
-                produto_div.innerHTML = `
-                    <div class="card clicavel" onclick="passa_pagina('${unidade.nome}','${unidade.logo}')">
-                        <div class="card-content has-text-centered">
-                            <p class="title">${unidade.nome}</p>
-                            <p class="subtitle">Idade: ${unidade.idade_min} - ${unidade.idade_max} </p>
-                            <img src="${unidade.logo}" alt="${unidade.nome}">
-                            <p class="subtitle">PONTUAÇÃO:</p>
-                            <input type="number" class="quantity" value="0" id="pontos_${unidade.nome}" readonly>
-                        </div>
-                    </div>
-                `;
-                cardsContainer.appendChild(produto_div);
-            });
-        }
-        function passa_pagina(unidade_nome,unidade_logo) {
-            console.log(`SELECIONADA UNIDADE: ${unidade_nome}`)
-            localStorage.setItem('unidade_nome', unidade_nome);
-            localStorage.setItem('unidade_logo', unidade_logo);
-            window.location.href = 'pontuacao.html';
-        }
-        load_itens()
-    </script>
+    <!-- O script do js está importado, é um arquivo que nós escrevemos -->
+    <script src="index_script.js"></script>
 </body>
 </html>
