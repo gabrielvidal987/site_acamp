@@ -1,0 +1,177 @@
+.button.is-primary.is-fullwidth.is-large {
+    margin: 0 auto;
+    margin-top: 1em;
+    font-weight: bold;
+}
+button {
+    background-color: #4CAF50; /* Cor de fundo */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    padding: 10px 15px; /* Padding do botão */
+    font-size: 16px; /* Tamanho da fonte */
+    cursor: pointer; /* Muda o cursor ao passar por cima */
+    border-radius: 5px; /* Borda arredondada */
+    transition: background-color 0.3s; /* Efeito de transição */
+}
+button:hover {
+    background-color: #45a049; /* Cor ao passar o mouse */
+}
+
+input.quantity {
+    width: 60%; /* Largura do input */
+    text-align: center; /* Centraliza o texto */
+    padding: 10px; /* Padding do input */
+    border: 1px solid #ccc; /* Borda do input */
+    border-radius: 5px; /* Borda arredondada */
+    margin: 0 10px; /* Margem horizontal entre o input e os botões */
+    font-size: 16px; /* Tamanho da fonte */
+}
+.btnoper {
+    height: 2.5em;
+    width: 10em;
+    margin-bottom: 1em;
+    margin-top: 1em;
+    background-color: #fbc806;
+    color: #000000;
+    font-weight: bold;
+}
+#observacoes {
+    width: 100%;
+    padding: 3em;
+}
+.clicavel {
+    cursor: pointer;
+    padding: 10px 20px;
+    background-color: #4CAF50; /* Cor de fundo inicial */
+    color: white;
+    border: none;
+    text-align: center;
+    font-size: 16px;
+    border-radius: 5px;
+    transition: background-color 0.3s ease; /* Transição suave */
+}
+/* Estilo ao passar o mouse */
+.clicavel:hover {
+    background-color: #cecece; /* Cor de fundo quando o mouse está sobre o botão */
+}
+.title-pontuacao {
+    font-size: 3em;
+}
+.staff {
+    display: none;
+    border-radius: 10px;
+    border: solid 3px black;
+    width: 100%;
+    margin-top: 6em;
+    margin-bottom: 4em;
+}
+@media(max-width: 800px) {
+    #cards-container .column {
+        flex: 0 0 100%; /* Dois itens por linha */
+        max-width: 100%; /* Limita a largura máxima */
+    }
+    .btnoper {
+        height: 3em;
+        width: 3em;
+    }
+    input.quantity {
+        width: 40%;
+        height: 3em;
+        font-weight: bold;
+    }
+    .card .title {
+        font-size: 2.5em; /* Tamanho da fonte do título */
+        font-weight: bold; /* Negrito */
+        color: #313131; /* Cor do texto */
+    }
+    .card .subtitle {
+        font-size: 2em; /* Tamanho da fonte do subtítulo */
+        color: #666; /* Cor do texto */
+    }
+    .card {
+        background-color: #fff; /* Cor de fundo da carta */
+        border: 1px solid #ccc; /* Borda da carta */
+        border-radius: 10px; /* Cantos arredondados */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para a carta */
+        padding: 15px; /* Espaçamento interno */
+        text-align: center; /* Centraliza o texto dentro da carta */
+        width: 98%; /* Largura fixa para as cartas */
+    }
+    #cards-container {
+        display: flex; /* Usar flexbox para layout */
+        flex-wrap: wrap; /* Permite que as colunas quebrem para a próxima linha */
+        justify-content: center; /* Centraliza os itens horizontalmente */
+        align-items: center; /* Centraliza os itens verticalmente */
+        margin: 10px; /* Margem ao redor do contêiner */
+    }
+}
+/* Ajuste para telas entre 801px e 1000px */
+@media (min-width: 801px) and (max-width: 1000px) {
+    #cards-container .column {
+        flex: 0 0 50%; /* Dois itens por linha */
+        max-width: 50%; /* Limita a largura máxima */
+    }
+    input.quantity {
+        width: 50%;
+    }
+    .card .title {
+        font-size: 3em; /* Tamanho da fonte do título */
+        font-weight: bold; /* Negrito */
+        color: #313131; /* Cor do texto */
+    }
+    .card .subtitle {
+        font-size: 2em; /* Tamanho da fonte do subtítulo */
+        color: #666; /* Cor do texto */
+    }
+    .card {
+        background-color: #fff; /* Cor de fundo da carta */
+        border: 1px solid #ccc; /* Borda da carta */
+        border-radius: 10px; /* Cantos arredondados */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para a carta */
+        padding: 15px; /* Espaçamento interno */
+        text-align: center; /* Centraliza o texto dentro da carta */
+        width: 300px; /* Largura fixa para as cartas */
+    }
+    #cards-container {
+        display: flex; /* Usar flexbox para layout */
+        flex-wrap: wrap; /* Permite que as colunas quebrem para a próxima linha */
+        justify-content: center; /* Centraliza os itens horizontalmente */
+        align-items: center; /* Centraliza os itens verticalmente */
+        margin: 10px; /* Margem ao redor do contêiner */
+    }
+}
+/* Ajuste para telas grandes (acima de 1000px) */
+@media (min-width: 1001px) {
+    #cards-container .column {
+        flex: 0 0 25%; /* Quatro itens por linha */
+        max-width: 25%; /* Limita a largura máxima */
+    }
+    input.quantity {
+        width: 30%;
+    }
+    .card .title {
+        font-size: 2em; /* Tamanho da fonte do título */
+        font-weight: bold; /* Negrito */
+        color: #313131; /* Cor do texto */
+    }
+    .card .subtitle {
+        font-size: 3em; /* Tamanho da fonte do subtítulo */
+        color: #666; /* Cor do texto */
+    }
+    .card {
+        background-color: #fff; /* Cor de fundo da carta */
+        border: 1px solid #ccc; /* Borda da carta */
+        border-radius: 10px; /* Cantos arredondados */
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1); /* Sombra para a carta */
+        padding: 15px; /* Espaçamento interno */
+        text-align: center; /* Centraliza o texto dentro da carta */
+        width: 300px; /* Largura fixa para as cartas */
+    }
+    #cards-container {
+        display: flex; /* Usar flexbox para layout */
+        flex-wrap: wrap; /* Permite que as colunas quebrem para a próxima linha */
+        justify-content: center; /* Centraliza os itens horizontalmente */
+        align-items: center; /* Centraliza os itens verticalmente */
+        margin: 10px; /* Margem ao redor do contêiner */
+    }
+}
