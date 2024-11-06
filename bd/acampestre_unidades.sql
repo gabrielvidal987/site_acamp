@@ -35,6 +35,7 @@ CREATE TABLE `unidades` (
   `escapando_pelas_maos_score` int NOT NULL DEFAULT '0',
   `cordeiro_score` int NOT NULL DEFAULT '0',
   `pontuacao_total` int GENERATED ALWAYS AS (((((((((`quebra_cabecas_score` + `conhece_o_uniforme_score`) + `saindo_da_casa_de_jo_score`) + `campo_minado_score`) + `so_de_cabeca_score`) + `descubra_o_no_score`) + `fogos_e_fogoes_score`) + `escapando_pelas_maos_score`) + `cordeiro_score`)) STORED,
+  `caminho_foto` varchar(50) DEFAULT NULL,
   PRIMARY KEY (`id_sys`)
 ) ENGINE=InnoDB AUTO_INCREMENT=9 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -45,7 +46,7 @@ CREATE TABLE `unidades` (
 
 LOCK TABLES `unidades` WRITE;
 /*!40000 ALTER TABLE `unidades` DISABLE KEYS */;
-INSERT INTO `unidades` (`id_sys`, `nome`, `quebra_cabecas_score`, `conhece_o_uniforme_score`, `saindo_da_casa_de_jo_score`, `campo_minado_score`, `so_de_cabeca_score`, `descubra_o_no_score`, `fogos_e_fogoes_score`, `escapando_pelas_maos_score`, `cordeiro_score`) VALUES (1,'panda',0,0,0,0,0,0,0,0,0),(2,'aguia real',0,0,0,0,0,0,0,0,0),(3,'raposa',0,0,0,0,0,0,0,0,0),(4,'pantera',0,0,0,0,0,0,0,0,0),(5,'falcão',0,0,0,0,0,0,0,0,0),(6,'tigre',0,0,0,0,0,0,0,0,0),(7,'urso',0,0,0,0,0,0,0,0,0),(8,'lobo',0,0,0,0,0,0,0,0,0);
+INSERT INTO `unidades` (`id_sys`, `nome`, `quebra_cabecas_score`, `conhece_o_uniforme_score`, `saindo_da_casa_de_jo_score`, `campo_minado_score`, `so_de_cabeca_score`, `descubra_o_no_score`, `fogos_e_fogoes_score`, `escapando_pelas_maos_score`, `cordeiro_score`, `caminho_foto`) VALUES (1,'panda',4,6,0,0,0,0,34,0,600,NULL),(2,'aguia real',0,0,0,0,0,0,0,0,800,NULL),(3,'raposa',0,0,0,0,0,0,0,0,800,NULL),(4,'pantera',0,0,0,0,0,0,0,0,800,NULL),(5,'falcão',0,0,0,0,0,0,0,0,800,NULL),(6,'tigre',0,0,0,0,0,0,0,0,800,NULL),(7,'urso',0,0,0,0,0,0,0,0,800,NULL),(8,'lobo',0,0,0,0,0,0,0,0,800,NULL);
 /*!40000 ALTER TABLE `unidades` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -58,4 +59,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-05 10:30:40
+-- Dump completed on 2024-11-06 12:56:26
