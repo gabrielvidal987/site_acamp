@@ -25,25 +25,33 @@ app.use(cors());
 // Habilitar o middleware para parsing do corpo das requisições
 app.use(express.json()); // Mover essa linha para cima
 
-// Endpoint para verificar os dados de login
-app.get('/api/ef/', (req, res) => {
-    const nome = req.query.nome;
-    const senha = req.query.senha;
-    console.log(`Requisição para verificar se está correta a senha para o ${nome}`)
-    db.query(`SELECT * FROM usuario WHERE senha = '${senha}'`, (err, results) => {
+// Endpoint para receber os nomes das atividades
+app.get('/api/unidades/:nome_unidade', (req, res) => {
+    // Extrai o nome da atividade da URL
+    const nome_unidade = req.params.nome_unidade;
+    console.log(`Requisição para pegar os pontos da unidade ${nome_unidade}`)
+    const sql = `SELECT * FROM unidades WHERE nome = '${nome_unidade}'`
+    console.log(`comando sql -> ${sql}`)
+    db.query(sql, (err, results) => {
         if (err) {
             console.error('Erro ao consultar o banco de dados:', err);
             return res.status(500).json({ erro: 'Erro no servidor' });
         }
-        // Verifica se existe algum resultado
-        if (results.length === 0) {
-            return res.status(404).json({ erro: 'Usuario não encontrado no banco de dados' });
+        res.json(results[0]);
+    });
+});
+
+// Endpoint para receber os nomes das atividades
+app.get('/api/atividades', (req, res) => {
+    console.log(`Requisição para pegar os dados das atividades`)
+    const sql = `SELECT * FROM atividades`
+    console.log(`comando sql -> ${sql}`)
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Erro ao consultar o banco de dados:', err);
+            return res.status(500).json({ erro: 'Erro no servidor' });
         }
-        return res.json({
-            sucesso: true,
-            mensagem: 'Senha correta',
-            dados: results[0]  // Retorna os dados do usuário
-        });
+        res.json(results);
     });
 });
 
@@ -70,6 +78,29 @@ app.post('/api/login', (req, res) => {
         return res.json({
             mensagem: 'Senha correta',
             dados: result[0]  // Retorna os dados do usuário
+        });
+    });
+});
+
+// Endpoint para alterar a pontuação da unidade na prova determinada
+app.post('/api/alterascore', (req, res) => {
+    //pega o nome e senha que vieram na requisição
+    const nome_atividade = req.body.nome_atividade;
+    const nome_unidade = req.body.nome_unidade;
+    const novo_valor = req.body.novo_valor;
+    console.log(`Requisição para alterar a pontuação da atividade ${nome_atividade} na unidade ${nome_unidade}`)
+    //cria o comando sql puxando tudo daquela senha informada. caso não exista ele irá retornar vazio e informar que não existe a senha
+    const sql = `UPDATE unidades SET ${nome_atividade} = ${novo_valor} WHERE nome = '${nome_unidade}';`
+    console.log(`SQL DO PEDIDO: ${sql}`)
+    db.query(sql, (err, result) => {
+        //caso dê erro irá informar o erro
+        if (err) {
+            console.error('Erro ao inserir produto no banco de dados:', err);
+            return res.status(500).json({ error: 'Erro no servidor' });
+        }
+        //dando certo ele irá retornar para o fetch a mensagem de "Valor alterado!"
+        return res.json({
+            mensagem: 'Valor alterado!',
         });
     });
 });
