@@ -40,20 +40,6 @@ app.get('/api/unidades', (req, res) => {
     });
 });
 
-// Endpoint para receber os nomes das atividades
-app.get('/api/atividades', (req, res) => {
-    console.log(`\n\nRequisição para pegar os dados das atividades`)
-    const sql = `SELECT * FROM atividades`
-    console.log(`comando sql -> ${sql}`)
-    db.query(sql, (err, results) => {
-        if (err) {
-            console.error('Erro ao consultar o banco de dados:', err);
-            return res.status(500).json({ erro: 'Erro no servidor' });
-        }
-        res.json(results);
-    });
-});
-
 // Endpoint para verificar se a senha existe e retornar os dados do usuario daquela senha
 app.post('/api/login', (req, res) => {
     //pega o nome e senha que vieram na requisição
@@ -92,7 +78,7 @@ async function processaUnidades(lista_unidades) {
 // Endpoint para chamar a atualização de pontos totais de cada unidade
 app.get('/api/atualizapontos', (req, res) => {
     console.log(`\n\nRequisição para atualização de pontos totais de cada unidade`)
-    const lista_unidades = ['panda','agua_real','raposa','pantera','falcao','tigre','urso','lobo'];
+    const lista_unidades = ['panda','aguia_real','raposa','pantera','falcao','tigre','urso','lobo'];
     processaUnidades(lista_unidades)
 });
 

@@ -17,10 +17,12 @@ const coluna_unidade_atividades = {
 
 //funcao para carregar os cards dinamicamente
 function load_data() {
+    //atualiza os pontos
     fetch(`${urlServ}/api/atualizapontos`)
+    //limpa o html
     cardsContainer.innerHTML = '';
     //aqui atribui o nome da unidade ao h1
-    document.getElementById('pontuacao_h1').innerHTML = localStorage.getItem('unidade_nome')
+    document.getElementById('pontuacao_h1').innerHTML = localStorage.getItem('unidade_nome_formatado')
     //aqui atribui a imagem da unidade
     document.getElementById('img_logo_unidade').src = localStorage.getItem('unidade_logo')
     //dá o fetch para requisitar as atividades
@@ -45,7 +47,8 @@ function load_data() {
                 {
                     return;
                 }
-
+            //cria a variavel com o nome da unidade armazenado localmente no navegador do cliente
+            const nome_unidade = localStorage.getItem('unidade_nome')
             //cria uma div que será o card
             const atividade_div = document.createElement('div');
             //atribui a classe á div
@@ -63,7 +66,7 @@ function load_data() {
                         <p class="title">${atividade.nome_atividade}</p>
                         <img src="${atividade.caminho_foto_atividade}" alt="${atividade.nome_atividade}">
                         <p class="subtitle">PONTUAÇÃO:</p>
-                        <input type="number" class="quantity" value="${atividade.panda}" id="pontos${atividade.nome_atividade}" readonly>
+                        <input type="number" class="quantity" value="${atividade[localStorage.getItem('unidade_nome')]}" id="pontos${atividade.nome_atividade}" readonly>
                         </br>
                         <button class="btnoper increment" onclick="alterar_valor('${atividade.nome_atividade}','subtrair',100)">-100 pontos</button>
                         `;
@@ -74,7 +77,7 @@ function load_data() {
                         <p class="title">${atividade.nome_atividade}</p>
                         <img src="${atividade.caminho_foto_atividade}" alt="${atividade.nome_atividade}">
                         <p class="subtitle">PONTUAÇÃO:</p>
-                        <input type="number" class="quantity" value="${atividade.panda}" id="pontos${atividade.nome_atividade}" readonly>
+                        <input type="number" class="quantity" value="${atividade[localStorage.getItem('unidade_nome')]}" id="pontos${atividade.nome_atividade}" readonly>
                         </br>
                         <button class="btnoper increment" onclick="alterar_valor('${atividade.nome_atividade}','somar',10)">+10 pontos</button>
                         <button class="btnoper increment" onclick="alterar_valor('${atividade.nome_atividade}','somar',50)">+50 pontos</button>
@@ -93,7 +96,7 @@ function load_data() {
                         <p class="title">${atividade.nome_atividade}</p>
                         <img src="${atividade.caminho_foto_atividade}" alt="${atividade.nome_atividade}">
                         <p class="subtitle">PONTUAÇÃO:</p>
-                        <input type="number" class="quantity" value="${atividade.panda}" id="pontos${atividade.nome_atividade}" readonly>
+                        <input type="number" class="quantity" value="${atividade[localStorage.getItem('unidade_nome')]}" id="pontos${atividade.nome_atividade}" readonly>
                     </div>
                 </div>
             `;
