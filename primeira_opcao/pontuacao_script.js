@@ -16,9 +16,13 @@ const coluna_unidade_atividades = {
 }
 
 //funcao para carregar os cards dinamicamente
-function load_data() {
+async function load_data() {
     //atualiza os pontos
-    fetch(`${urlServ}/api/atualizapontos`)
+    const respostaPontos = await fetch(`${urlServ}/api/atualizapontos`);
+    // Espera o fetch terminar para seguir ao proximo fetch
+    if (!respostaPontos.ok) {
+        throw new Error('Falha ao atualizar pontos');
+    }
     //limpa o html
     cardsContainer.innerHTML = '';
     //aqui atribui o nome da unidade ao h1

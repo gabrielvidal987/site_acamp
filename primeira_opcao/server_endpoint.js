@@ -76,15 +76,23 @@ async function processaUnidades(lista_unidades) {
 }
 
 // Endpoint para chamar a atualização de pontos totais de cada unidade
-app.get('/api/atualizapontos', (req, res) => {
+app.get('/api/atualizapontos', async (req, res) => {
     console.log(`\n\nRequisição para atualização de pontos totais de cada unidade`)
     const lista_unidades = ['panda','aguia_real','raposa','pantera','falcao','tigre','urso','lobo'];
-    processaUnidades(lista_unidades)
+    // Aguardamos o processamento de todas as unidades antes de enviar a resposta
+    await processaUnidades(lista_unidades);
+
+    // Retorna um JSON indicando que o processamento foi concluído com sucesso
+    res.json({
+        status: 'sucesso',
+        mensagem: 'Pontos das unidades atualizados com sucesso',
+        unidades: lista_unidades  // Retorna as unidades que foram processadas
+    });
 });
 
 // Função que atualiza a pontuação total
 async function atualiza_valor_total(nome_unidade) {
-    console.log(`\n\nrequisição para pegar lista de pontos do ${nome_unidade}`);
+    console.log(`\n\n--------requisição para pegar lista de pontos do ${nome_unidade}--------`);
     const sql = `SELECT ${nome_unidade} FROM atividades_unidades WHERE nome_atividade != 'Pontuação total' AND nome_atividade != 'caminho_foto_unidade';`;
     console.log(`comando sql: ${sql}`);
     // Usar Promise para envolver o callback da consulta SQL

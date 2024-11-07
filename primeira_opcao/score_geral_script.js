@@ -16,13 +16,17 @@ const converte_nome = {
     "lobo": "Lobo"
 }
 //funcao para carregar os cards dinamicamente
-function load_itens() {
+async function load_itens() {
     //dicionario contendo pontuação total sendo chave=coluna/unidade e valor=celula/pontuacao
     const pontuacao_total_dict = {};
     //dicionario contendo caminho da foto da unidade sendo chave=coluna/unidade e valor=celula/caminho da foto
     const caminho_fotos_dict = {};
     //atualiza os pontos
-    fetch(`${urlServ}/api/atualizapontos`)
+    const respostaPontos = await fetch(`${urlServ}/api/atualizapontos`);
+    // Espera o fetch terminar para seguir ao proximo fetch
+    if (!respostaPontos.ok) {
+        throw new Error('Falha ao atualizar pontos');
+    }
     //realiza a pesquisa das unidades e cria os cards
     fetch(`${urlServ}/api/unidades`)
     .then(response => {
@@ -73,7 +77,7 @@ function load_itens() {
                     //cria um dicionario com as infos da unidade e adiciona na lista de dicionarios de infos
                     dicionario_novo = {
                         'nome_unidade' : converte_nome[chave],
-                        'pontuacao_total' : pontuacao_total_dict[chave]
+                        'pontuacao_total' : parseInt(pontuacao_total_dict[chave])
                     }
                     list_dict_ranking.push(dicionario_novo)
                 }
@@ -87,13 +91,21 @@ function load_itens() {
 //funcao para carregar o ranking
 function load_ranking() {
     //armazena a div de ranking em uma variavel
-    div_ranking = document.getElementById('ranking_id')
+    const div_ranking = document.getElementById('ranking_id')
     //limpa a div
     div_ranking.innerHTML = ''
+    // Ordena o ranking por pontuação (do maior para o menor)
+    list_dict_ranking.sort((a, b) => b.pontuacao_total - a.pontuacao_total);
     //itera sobre a lista de dicionarios sendo cada item um dicionarios
-    list_dict_ranking.forEach(dict => {
-        console.log(`nome da unidade ${dict['nome_unidade']}`)
-        console.log(`pontuação ${dict['pontuacao_total']}`)
+    list_dict_ranking.forEach((dict,index) => {
+        const cardDiv = document.createElement('div');
+        cardDiv.classList.add('card');
+        cardDiv.innerHTML = `
+            <div class="position">#${index + 1}</div>
+            <div class="name">${dict['nome_unidade']}</div>
+            <div class="score">Pontuação: ${dict['pontuacao_total']}</div>
+        `;
+        div_ranking.appendChild(cardDiv);
     })
 }
 //passa a pagina para verificar o score daquela unidade em especifico
