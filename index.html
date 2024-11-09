@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LOGIN</title>
+    <!-- Aqui importa uma biblioteca para deixar os itens redimensionados facilmente, principalmente o <section> -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
+    <!-- Aqui importa uma biblioteca para a seta do botão de prosseguir -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Aqui importa o css que escrevemos -->
+    <link rel="stylesheet" href="index_style.css">
+    <style></style>
+</head>
+<body>
+    <!-- Section principal contendo os input de nome e senha -->
+    <section class="section">
+        <div class="container has-text-centered">
+            <label class="lblForm" for="nome" style="color: #ffbf00;font-size: 2em;">Nome:</label><br>
+            <input type="text" id="nome" placeholder="Digite seu nome...">
+            <br><br>
+            <label class="lblForm" for="senha" id="lbsenha" style="color: #ffbf00;font-size: 2em;">Senha de acesso:</label><br>
+            <input type="text" id="senha" placeholder="Digite a senha de acesso fornecida...">
+            </br></br>
+        </div>
+        <!-- Div contendo o botão de prosseguir... note que para centralizar o texto com essa biblioteca é só adicionar na classe o "has-text-centered" -->
+        <div class="container has-text-centered">
+        <!-- O botão chama a função "campo_preenchido" que faz a verificação do login e em seguida leva para o score geral -->
+            <button class="button is-primary is-fullwidth is-large" onclick="campo_preenchido()" style="background-color: #ed1c24;">
+                PONTUAÇÃO GERAL <i class="fas fa-arrow-right" style="margin-left: 1em;"></i>
+            </button>
+        </div>
+    </section>
+    <!-- O script do js está importado, é um arquivo que nós escrevemos -->
+    <script src="index_script.js"></script>
+</body>
+</html>
