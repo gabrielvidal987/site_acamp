@@ -1,3 +1,9 @@
+html, body {
+    margin: 0;             /* Remove margens */
+    padding: 0;            /* Remove espaçamento interno */
+    height: 100%;          /* Ocupa 100% da altura da tela */
+    width: 100%;           /* Ocupa 100% da largura da tela */
+}
 body {
     background-image: url("fundo.jpg");
 }
@@ -121,9 +127,15 @@ input.quantity {
         align-items: center; /* Centraliza os itens verticalmente */
         margin: 10px; /* Margem ao redor do contêiner */
     }
+    #score_total_unidade {
+        font-size: 1em;
+    }
 }
 /* Ajuste para telas entre 801px e 1000px */
 @media (min-width: 801px) and (max-width: 1000px) {
+    #score_total_unidade {
+        font-size: 1.5em;
+    }
     #cards-container .column {
         flex: 0 0 50%; /* Dois itens por linha */
         max-width: 50%; /* Limita a largura máxima */
@@ -188,5 +200,11 @@ input.quantity {
         justify-content: center; /* Centraliza os itens horizontalmente */
         align-items: center; /* Centraliza os itens verticalmente */
         margin: 10px; /* Margem ao redor do contêiner */
+    }
+    img {
+        width: 30%;
+    }
+    #pontuacao_h1 {
+        margin: 0;
     }
 }

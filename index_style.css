@@ -7,6 +7,11 @@ html, body {
     overflow: hidden;      /* Opcional: Remove barra de rolagem */
 }
 
+input:focus {
+    outline: none;
+    border: none; /* Se você também quiser remover qualquer borda existente */
+}
+
 body {
     background-image: url("fundo.jpg");
 }

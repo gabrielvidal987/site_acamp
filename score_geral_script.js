@@ -1,6 +1,6 @@
 //url do servidor
-// const urlServ = 'http://localhost:3000';
-const urlServ = 'http://192.168.1.7:3000';
+const urlServ = 'http://localhost:3000';
+// const urlServ = 'http://192.168.1.7:3000';
 //variavel do cardscontainer que é a div que ficam os cards
 const cardsContainer = document.getElementById('cards-container');
 //cria a lista de dicionarios contendo info de nome da unidade e pontuação geral pro ranking
@@ -117,6 +117,31 @@ function passa_pagina(unidade_nome,unidade_logo) {
     localStorage.setItem('unidade_logo', unidade_logo);
     //joga para a pagina de pontuação
     window.location.href = 'pontuacao.html';
+}
+
+//chama a endpoint para zerar toda a pontuação
+function zerar_pontuacao() {
+    const resultado = confirm("Certeza que deseja apagar toda a pontuação?");
+    if (resultado) {
+        fetch(`${urlServ}/api/zerar`)
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Erro na rede: ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            alert('Toda a pontuação foi zerada!!')
+        })
+        .catch(error => console.error('Erro ao buscar os dados:', error));
+    } 
+    else {
+        return
+    }
+}
+
+if (localStorage.getItem('controle_unidade') == 'diretor') {
+    document.getElementById('btn_zerar').style.display = '';
 }
 //chama as funções para carregar os cards e o ranking
 load_itens()

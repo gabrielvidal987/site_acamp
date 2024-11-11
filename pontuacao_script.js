@@ -1,5 +1,6 @@
 //url do servidor
-const urlServ = 'http://192.168.1.7:3000';
+const urlServ = 'http://localhost:3000';
+// const urlServ = 'http://192.168.1.7:3000';
 //variavel do cardscontainer que é a div que ficam os cards
 const cardsContainer = document.getElementById('cards-container');
 //aqui cria um dicionario contendo as infos de cada atividade (posteriormente será mudado para usar o bd)
@@ -25,10 +26,6 @@ async function load_data() {
     }
     //limpa o html
     cardsContainer.innerHTML = '';
-    //aqui atribui o nome da unidade ao h1
-    document.getElementById('pontuacao_h1').innerHTML = localStorage.getItem('unidade_nome_formatado')
-    //aqui atribui a imagem da unidade
-    document.getElementById('img_logo_unidade').src = localStorage.getItem('unidade_logo')
     //dá o fetch para requisitar as atividades
     fetch(`${urlServ}/api/unidades`)
     .then(response => {
@@ -43,7 +40,9 @@ async function load_data() {
             //atribui a pontuação total
             if (atividade.nome_atividade == 'Pontuação total') 
             {
-                document.getElementById('score_total_unidade').innerHTML = `${atividade[localStorage.getItem('unidade_nome')]} PONTOS`;
+                const score_unidade = atividade[localStorage.getItem('unidade_nome')]
+                if (score_unidade == 0 || score_unidade == '0') {window.location.href = 'score_zero.html';}
+                document.getElementById('score_total_unidade').innerHTML = `${score_unidade} PONTOS`;
                 return;
             }
             //pula a parte do caminho da foto da unidade
@@ -113,6 +112,10 @@ async function load_data() {
         })
     })
     .catch(error => console.error('Erro ao buscar os dados:', error));
+    //aqui atribui o nome da unidade ao h1
+    document.getElementById('pontuacao_h1').innerHTML = localStorage.getItem('unidade_nome_formatado')
+    //aqui atribui a imagem da unidade
+    document.getElementById('img_logo_unidade').src = localStorage.getItem('unidade_logo')
 }
 
 // função para alterar a pontuação de tal atividade
@@ -174,6 +177,8 @@ function voltar_home() {
     window.location.href = 'score_geral.html';
 }
 
+if (localStorage.getItem('controle_unidade') == 'staff') {
+    document.getElementById('btn_voltar').style.display = '';}
 console.log(`UNIDADE APRESENTADA: ${localStorage.getItem('unidade_nome')}`)
 // chama a função para criar os cards
 load_data()

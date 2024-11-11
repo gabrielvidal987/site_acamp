@@ -151,6 +151,22 @@ app.post('/api/alterascore', (req, res) => {
     atualiza_valor_total(nome_unidade)
 });
 
+// Endpoint para zerar a pontuação total
+app.get('/api/zerar', (req, res) => {
+    // Extrai o nome da atividade da URL
+    console.log(`\n\nRequisição para zerar a pontuação total`)
+    const sql = `UPDATE atividades_unidades SET panda = '0', aguia_real = '0',raposa = '0',pantera = '0',falcao = '0',tigre = '0',urso = '0',lobo = '0' WHERE id_sys != 11 ;`
+    console.log(`comando sql -> ${sql}`)
+    db.query(sql, (err, results) => {
+        if (err) {
+            console.error('Erro ao consultar o banco de dados:', err);
+            return res.status(500).json({ erro: 'Erro no servidor' });
+        }
+        res.json(results);
+    });
+});
+
+
 // Iniciar o servidor
 app.listen(PORT, () => {
     console.log(`Servidor rodando na porta ${PORT}`);

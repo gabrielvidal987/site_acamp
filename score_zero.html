@@ -3,13 +3,13 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Pontuação Geral</title>
+    <title>PONTUAÇÃO DA UNIDADE</title>
     <!-- Aqui importa uma biblioteca para deixar os itens redimensionados facilmente, principalmente o <section> -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.3/css/bulma.min.css">
     <!-- Aqui importa uma biblioteca para criar setas e icones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
     <!-- Aqui importa o css que criamos -->
-    <link rel="stylesheet" href="pontuacao_style.css">
+    <link rel="stylesheet" href="score_zero_style.css">
     <style></style>
 </head>
 <body>
@@ -19,32 +19,14 @@
         <h1 style="color: #FFBF00">PONTUAÇÃO DA UNIDADE</br></h1>
         <!-- essa tag h1 é preenchida com a pntuação da unidade pelo js -->
         </br>
+        <!-- aqui fica o nome da unidade -->
         <h1 id="pontuacao_h1" style="color: #FFBF00;font-weight: bold;"></h1>
         <!-- essa imagem é preenchida pelo js -->
         <img id="img_logo_unidade">
         <!-- Aqui exibe a pontuação total -->
         <h1 id="score_total_unidade" style="color: #FFBF00;font-weight: bold;">
     </div>
-    <!-- essa section é o local que fica o card que aquela pessoa pode alterar. a classe por default fica escondida para ser exibida caso a pagina seja aberta por um staff -->
-    <div id="atividade_staff" class="card-content has-text-centered staff" >
-    </div>
-    <!-- essa section é o local que ficam os cards de cada prova com as pontuações, ele é preenchido dinamicamente pelo js -->
-    <section class="section">
-        <div class="container">
-            <div class="columns is-multiline" id="cards-container">
-                <!-- Os cards serão inseridos aqui dinamicamente pelo js-->
-            </div>
-        </div>
-    </section>
-    <!-- Section que fica com o botão de voltar para o score geral-->
-    <section class="section" id="btn_voltar" style="display: none;">
-        <div class="container has-text-centered">
-            <button class="button is-primary is-fullwidth is-large" onclick="voltar_home()" style="background-color: #ed1c24;">
-                <i class="fas fa-arrow-left" style="margin-right: 1em;"></i>VOLTAR
-            </button>
-        </div>
-    </section>
     <!-- aqui fica a conexão com o script que fizemos em js -->
-    <script src="pontuacao_script.js"></script>
+    <script src="score_zero_script.js"></script>
 </body>
 </html>
