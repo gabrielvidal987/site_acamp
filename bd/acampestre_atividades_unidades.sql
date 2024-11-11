@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: acampestre
 -- ------------------------------------------------------
--- Server version	8.0.37
+-- Server version	8.0.36
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -44,7 +44,7 @@ CREATE TABLE `atividades_unidades` (
 
 LOCK TABLES `atividades_unidades` WRITE;
 /*!40000 ALTER TABLE `atividades_unidades` DISABLE KEYS */;
-INSERT INTO `atividades_unidades` VALUES (1,'Quebra Cabeças','logo_atividades/atividade_exemplo.png','6','0','0','0','0','0','0','0'),(2,'Conhece O Uniforme?','logo_atividades/atividade_exemplo.png','7','0','0','0','0','0','0','0'),(3,'Saindo Da Casa De Jó?','logo_atividades/atividade_exemplo.png','45','0','0','0','0','0','0','0'),(4,'Campo Minado','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(5,'Só De Cabeça','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(6,'Descubra O Nó','logo_atividades/atividade_exemplo.png','4','0','0','0','0','0','0','0'),(7,'Fogos E Fogões','logo_atividades/atividade_exemplo.png','6','0','0','0','0','0','0','0'),(8,'Escapando Pelas Mãos','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(9,'Cordeiro','logo_atividades/atividade_exemplo.png','200','600','800','800','800','800','800','800'),(10,'Pontuação total','logo_atividades/atividade_exemplo.png','268','600','800','800','800','800','800','800'),(11,'caminho_foto_unidade','logo_unidades/logo_exemplo.png','logo_unidades/panda.png','logo_unidades/aguia.png','logo_unidades/raposa.png','logo_unidades/pantera.png','logo_unidades/falcao.png','logo_unidades/tigre.png','logo_unidades/urso.png','logo_unidades/lobo.png');
+INSERT INTO `atividades_unidades` VALUES (1,'Quebra Cabeças','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(2,'Conhece O Uniforme?','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(3,'Saindo Da Casa De Jó?','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(4,'Campo Minado','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(5,'Só De Cabeça','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(6,'Descubra O Nó','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(7,'Fogos E Fogões','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(8,'Escapando Pelas Mãos','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(9,'Cordeiro','logo_atividades/atividade_exemplo.png','0','0','0','0','0','0','0','0'),(10,'Pontuação total','logo_atividades/atividade_exemplo.png','800','800','800','800','800','800','800','800'),(11,'caminho_foto_unidade','logo_unidades/logo_exemplo.png','logo_unidades/panda.png','logo_unidades/aguia_real.png','logo_unidades/raposa.png','logo_unidades/pantera.png','logo_unidades/falcao.png','logo_unidades/tigre.png','logo_unidades/urso.png','logo_unidades/lobo.png');
 /*!40000 ALTER TABLE `atividades_unidades` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -57,4 +57,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-09  2:03:53
+-- Dump completed on 2024-11-11 12:54:07

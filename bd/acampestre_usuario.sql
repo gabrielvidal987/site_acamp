@@ -2,7 +2,7 @@
 --
 -- Host: 127.0.0.1    Database: acampestre
 -- ------------------------------------------------------
--- Server version	8.0.37
+-- Server version	8.0.36
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -27,8 +27,9 @@ CREATE TABLE `usuario` (
   `nome` varchar(50) DEFAULT 'usuario padrão',
   `senha` varchar(50) NOT NULL DEFAULT 'senha_acesso',
   `acesso_prova` varchar(50) NOT NULL DEFAULT 'nenhum',
+  `unidade` varchar(50) DEFAULT 'fenix',
   PRIMARY KEY (`id_sys`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -37,7 +38,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'usuario padrão','123456','Saindo Da Casa De Jó?');
+INSERT INTO `usuario` VALUES (2,'staff1','1','Quebra Cabeças','staff'),(3,'staff2','2','Conhece O Uniforme?','staff'),(4,'staff3','3','Saindo Da Casa De Jó?','staff'),(5,'staff4','4','Campo Minado','staff'),(6,'staff5','5','Só De Cabeça','staff'),(7,'staff6','6','Descubra O Nó','staff'),(8,'staff7','7','Fogos E Fogões','staff'),(9,'staff8','8','Escapando Pelas Mãos','staff'),(10,'staff9','9','Cordeiro','staff'),(11,'conselheiro1','c1','nenhum','panda'),(12,'conselheiro2','c2','nenhum','aguia_real'),(13,'conselheiro3','c3','nenhum','raposa'),(14,'conselheiro4','c4','nenhum','pantera'),(15,'conselheiro5','c5','nenhum','falcao'),(16,'conselheiro6','c6','nenhum','tigre'),(17,'conselheiro7','c7','nenhum','urso'),(18,'conselheiro8','c8','nenhum','lobo'),(19,'diretoria','ac','nenhum','diretor');
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -50,4 +51,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2024-11-09  2:03:53
+-- Dump completed on 2024-11-11 12:54:07
