@@ -97,15 +97,54 @@ function load_ranking() {
     div_ranking.innerHTML = ''
     // Ordena o ranking por pontuação (do maior para o menor)
     list_dict_ranking.sort((a, b) => b.pontuacao_total - a.pontuacao_total);
+    //lista de cards:
+    const lista = Array.from(document.getElementsByClassName('title'))
     //itera sobre a lista de dicionarios sendo cada item um dicionarios
     list_dict_ranking.forEach((dict,index) => {
         const cardDiv = document.createElement('div');
         cardDiv.classList.add('card');
+        cardDiv.classList.add('ranking');
         cardDiv.innerHTML = `
-            <div class="position">#${index + 1}</div>
-            <div class="name">${dict['nome_unidade']}</div>
-            <div class="score">Pontuação: ${dict['pontuacao_total']}</div>
+            <div class="position ranking_pos">#${index + 1}</div>
+            <div class="name ranking_name">${dict['nome_unidade']}</div>
+            <div class="score ranking_score">Pontuação: ${dict['pontuacao_total']}</div>
         `;
+        if (index + 1 == 1) {
+            cardDiv.innerHTML += `
+                <i class="fa fa-star fa-lg primeiro_lugar" aria-hidden="true"></i>
+            `;
+            lista.forEach(title => {
+                if (title.innerHTML == dict['nome_unidade']) {
+                    title.innerHTML += `</br><i class="fa fa-medal primeiro_lugar"></i>`;
+                    return;
+                }
+            })
+        }
+        if (index + 1 == 2) {
+            cardDiv.innerHTML += `
+            <i class="fa fa-star fa-lg segundo_lugar" aria-hidden="true"></i>
+            <i class="fa fa-star fa-lg segundo_lugar" aria-hidden="true"></i>
+        `;
+            lista.forEach(title => {
+                if (title.innerHTML == dict['nome_unidade']) {
+                    title.innerHTML += `</br><i class="fa fa-medal segundo_lugar"></i><i class="fa fa-medal segundo_lugar"></i>`;
+                    return;
+                }
+            })
+        }
+        if (index + 1 == 3) {
+            cardDiv.innerHTML += `
+                <i class="fa fa-star fa-lg terceiro_lugar" aria-hidden="true"></i>
+                <i class="fa fa-star fa-lg terceiro_lugar" aria-hidden="true"></i>
+                <i class="fa fa-star fa-lg terceiro_lugar" aria-hidden="true"></i>
+            `;
+            lista.forEach(title => {
+                if (title.innerHTML == dict['nome_unidade']) {
+                    title.innerHTML += `</br><i class="fa fa-medal terceiro_lugar"></i><i class="fa fa-medal terceiro_lugar"></i><i class="fa fa-medal terceiro_lugar"></i>`;
+                    return;
+                }
+            })
+        }
         div_ranking.appendChild(cardDiv);
     })
 }

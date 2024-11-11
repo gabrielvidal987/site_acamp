@@ -19,7 +19,6 @@ button {
 button:hover {
     background-color: #45a049; /* Cor ao passar o mouse */
 }
-
 input.quantity {
     width: 60%; /* Largura do input */
     text-align: center; /* Centraliza o texto */
@@ -51,12 +50,31 @@ input.quantity {
     border-radius: 5px;
     transition: background-color 0.3s ease; /* Transição suave */
 }
-/* Estilo ao passar o mouse */
 .clicavel:hover {
     background-color: #cecece; /* Cor de fundo quando o mouse está sobre o botão */
 }
 .title-pontuacao {
     font-size: 3em;
+}
+.primeiro_lugar {
+    color: #ffd83c;
+}
+.segundo_lugar {
+    color: #C0C0C0;
+}
+.terceiro_lugar {
+    color: #CD7F32;
+}
+.ranking {
+    margin-bottom: 1em;
+}
+.ranking_pos {
+}
+.ranking_name {
+    font-weight: bold;
+}
+.ranking_score {
+    font-weight: bold;
 }
 @media(max-width: 800px) {
     #cards-container .column {
