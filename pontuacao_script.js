@@ -3,19 +3,7 @@ const urlServ = 'http://localhost:3000';
 // const urlServ = 'http://192.168.1.7:3000';
 //variavel do cardscontainer que é a div que ficam os cards
 const cardsContainer = document.getElementById('cards-container');
-//aqui cria um dicionario contendo as infos de cada atividade (posteriormente será mudado para usar o bd)
-const coluna_unidade_atividades = {
-    quebra_cabecas_score: "Quebra Cabeças",
-    conhece_o_uniforme_score: "Conhece O Uniforme?",
-    saindo_da_casa_de_jo_score: "Saindo Da Casa De Jó",
-    campo_minado_score: "Campo Minado",
-    so_de_cabeca_score: "Só De Cabeça",
-    descubra_o_no_score: "Descubra O Nó",
-    fogos_e_fogoes_score: "Fogos E Fogões",
-    escapando_pelas_maos_score: "Escapando Pelas Mãos",
-    cordeiro_score: "Cordeiro"
-}
-
+const div_staff = document.getElementById('atividade_staff')
 //funcao para carregar os cards dinamicamente
 async function load_data() {
     //atualiza os pontos
@@ -26,6 +14,7 @@ async function load_data() {
     }
     //limpa o html
     cardsContainer.innerHTML = '';
+    div_staff.innerHTML = '';
     //dá o fetch para requisitar as atividades
     fetch(`${urlServ}/api/unidades`)
     .then(response => {
@@ -50,49 +39,24 @@ async function load_data() {
                 {
                     return;
                 }
-            //cria a variavel com o nome da unidade armazenado localmente no navegador do cliente
-            const nome_unidade = localStorage.getItem('unidade_nome')
             //cria uma div que será o card
             const atividade_div = document.createElement('div');
             //atribui a classe á div
             atividade_div.className = 'column ';
             //caso o acesso_prova seja igual ao nome da atividade a pessoa terá os botões de editar aquela atividade
             //no caso da atividade do cordeiro terá o botão de decrementar, nas demais é apenas botão de incrementar
-            if (localStorage.getItem('acesso_prova') == atividade.nome_atividade) 
+            if (localStorage.getItem('acesso_prova') == atividade.nome_atividade || localStorage.getItem('acesso_prova') == 'acesso_total')
             {
-                const div_staff = document.getElementById('atividade_staff')
                 const atividade_staff_div = document.createElement('div');
-                div_staff.innerHTML = '';
-                if (atividade.nome_atividade == 'Cordeiro') 
-                {
-                    atividade_staff_div.innerHTML = `
-                        <div class="card-content has-text-centered">
-                            <p class="title staff_title">${atividade.nome_atividade}</p>
-                            <img src="${atividade.caminho_foto_atividade}" alt="${atividade.nome_atividade}">
-                            <p class="subtitle">PONTUAÇÃO:</p>
-                            <input type="number" class="quantity" value="${atividade[localStorage.getItem('unidade_nome')]}" id="pontos${atividade.nome_atividade}" readonly>
-                            </br>
-                            <button class="btnoper increment" onclick="alterar_valor('${atividade.nome_atividade}','subtrair',100)">-100 pontos</button>
-                        </div>
-                        `;
-                }
-                else
-                {
-                    atividade_staff_div.innerHTML = `
-                        <div class="card-content has-text-centered">
-                            <p class="title staff_title">${atividade.nome_atividade}</p>
-                            <img src="${atividade.caminho_foto_atividade}" alt="${atividade.nome_atividade}">
-                            <p class="subtitle">PONTUAÇÃO:</p>
-                            <input type="number" class="quantity" value="${atividade[localStorage.getItem('unidade_nome')]}" id="pontos${atividade.nome_atividade}" readonly>
-                            </br>
-                            <button class="btnoper increment" onclick="alterar_valor('${atividade.nome_atividade}','somar',10)">+10 pontos</button>
-                            </br>
-                            <button class="btnoper increment" onclick="alterar_valor('${atividade.nome_atividade}','somar',50)">+50 pontos</button>
-                            </br>
-                            <button class="btnoper increment" onclick="alterar_valor('${atividade.nome_atividade}','somar',100)">+100 pontos</button>
-                        </div>
-                        `;
-                }
+                atividade_staff_div.innerHTML = `
+                    <div class="card-content has-text-centered">
+                        <p class="title staff_title">${atividade.nome_atividade}</p>
+                        <img src="${atividade.caminho_foto_atividade}" alt="${atividade.nome_atividade}">
+                        <p class="subtitle">PONTUAÇÃO:</p>
+                        <input type="number" class="quantity" value="${atividade[localStorage.getItem('unidade_nome')]}" id="pontos${atividade.nome_atividade}" onchange="alterar_valor('${atividade.nome_atividade}')">
+                        </br>
+                    </div>
+                    `;
                 //adiciona essa div criada na div de staffs
                 div_staff.appendChild(atividade_staff_div);
                 div_staff.style.display = 'block';
@@ -119,26 +83,12 @@ async function load_data() {
 }
 
 // função para alterar a pontuação de tal atividade
-function alterar_valor(atividade_nome,operacao,qtd_pontos) {
+function alterar_valor(atividade_nome) {
     // pega o input que contem os pontos
     var pontos = document.getElementById(`pontos${atividade_nome}`)
     // Obtém o valor atual como número
-    var valorAtual = parseInt(pontos.value); // Usa 0 se o valor não for um número
-    var novo_valor = 0
-    // verifica o tipo de operacao
-    if (operacao == "subtrair") {
-        if (valorAtual > 0) { // Verifica se pode subtrair
-            if (valorAtual - qtd_pontos < 0) {
-                novo_valor = 0; // coloca 0 caso o resultado seja um numero negativo
-            }
-            else {
-                novo_valor = valorAtual - qtd_pontos; // Decrementa
-            }
-        }
-    } 
-    else if (operacao == "somar") {
-        novo_valor = valorAtual + qtd_pontos; // Incrementa
-    }
+    var novo_valor = parseInt(pontos.value);
+    console.log(`Atualizando pontuação da atividade ${atividade_nome} para ${novo_valor} pontos`)
     //cria o dicionario com os dados do nome da atividade, nome da unidade e novo valor de pontuação
     const data = {
         nome_atividade : atividade_nome,
@@ -164,7 +114,7 @@ function alterar_valor(atividade_nome,operacao,qtd_pontos) {
     })
     //pega os dados do retorno e dá o alerta com a mensagem da resposta do servidor e caso tenham dados existentes ele prossegue para a pagina de score geral
     .then(data => {
-        console.log('valor atualizado')
+        console.log('Pontuação da atividade atualizada com sucesso!')
         load_data()
     })
     //caso dê erro em algo ele irá notificar no inspecionar

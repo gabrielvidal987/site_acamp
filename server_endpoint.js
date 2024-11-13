@@ -16,7 +16,7 @@ const db = mysql.createConnection({
 // Conectar ao banco de dados
 db.connect(err => {
     if (err) throw err;
-    console.log('Conectado ao banco de dados!');
+    console.log('             Conectado ao banco de dados!');
 });
 
 // Habilitar CORS
@@ -92,9 +92,9 @@ app.get('/api/atualizapontos', async (req, res) => {
 
 // Função que atualiza a pontuação total
 async function atualiza_valor_total(nome_unidade) {
-    console.log(`\n\n--------requisição para pegar lista de pontos do ${nome_unidade}--------`);
+    console.log(`\n\nAtualizando a pontuação da unidade --${nome_unidade}--`);
     const sql = `SELECT ${nome_unidade} FROM atividades_unidades WHERE nome_atividade != 'Pontuação total' AND nome_atividade != 'caminho_foto_unidade';`;
-    console.log(`comando sql: ${sql}`);
+    console.log(`sql: ${sql}`);
     // Usar Promise para envolver o callback da consulta SQL
     const resultado = await new Promise((resolve, reject) => {
         db.query(sql, (err, result) => {
@@ -111,9 +111,8 @@ async function atualiza_valor_total(nome_unidade) {
     });
 
     // Atualiza a pontuação total no banco
-    console.log(`\n\nRequisição para atualizar pontuação total da unidade ${nome_unidade}`);
     const sql_pontos_totais = `UPDATE atividades_unidades SET ${nome_unidade} = ${pontuacao_total} WHERE nome_atividade = 'Pontuação total'`;
-    console.log(`comando sql: ${sql_pontos_totais}`);
+    console.log(`sql: ${sql_pontos_totais}`);
 
     // Aguardar a atualização dos pontos totais
     await new Promise((resolve, reject) => {
@@ -169,5 +168,5 @@ app.get('/api/zerar', (req, res) => {
 
 // Iniciar o servidor
 app.listen(PORT, () => {
-    console.log(`Servidor rodando na porta ${PORT}`);
+    console.log(`------------Servidor rodando na porta ${PORT}------------`);
 });
