@@ -1,0 +1,58 @@
+-- CREATE DA TABELA DE ATIVIDADES_UNIDADES
+CREATE TABLE atividades_unidades (
+    id_sys INT AUTO_INCREMENT PRIMARY KEY, 
+    nome_atividade VARCHAR(50) DEFAULT 'nome_atividade',
+    caminho_foto_atividade VARCHAR(50) DEFAULT 'pasta/pasta',
+    panda VARCHAR(50) DEFAULT '0',
+    aguia_real VARCHAR(50) DEFAULT '0',
+    raposa VARCHAR(50) DEFAULT '0',
+    pantera VARCHAR(50) DEFAULT '0',
+    falcao VARCHAR(50) DEFAULT '0',
+    tigre VARCHAR(50) DEFAULT '0',
+    urso VARCHAR(50) DEFAULT '0',
+    lobo VARCHAR(50) DEFAULT '0'
+);
+
+-- INSERT DA TABELA DE ATIVIDADES_UNIDADES
+INSERT INTO atividades_unidades (nome_atividade, caminho_foto_atividade, panda, aguia_real, raposa, pantera, falcao, tigre, urso, lobo) VALUES
+('Quebra Cabeças', 'logo_atividades/quebra.png', '0', '150', '0', '0', '0', '0', '0', '50'),
+('Conhece O Uniforme?', 'logo_atividades/uniforme.png', '0', '0', '0', '0', '0', '0', '0', '0'),
+('Saindo Da Casa De Jó?', 'logo_atividades/casa.png', '0', '0', '0', '0', '0', '0', '0', '0'),
+('Campo Minado', 'logo_atividades/campo.png', '0', '0', '0', '0', '0', '0', '0', '0'),
+('Só De Cabeça', 'logo_atividades/sodecabeca.png', '0', '0', '0', '0', '0', '0', '0', '0'),
+('Descubra O Nó', 'logo_atividades/nos.png', '0', '0', '0', '0', '0', '0', '0', '0'),
+('Fogos E Fogões', 'logo_atividades/fogos.png', '0', '0', '0', '0', '0', '0', '0', '0'),
+('Escapando Pelas Mãos', 'logo_atividades/escapando.png', '0', '0', '0', '0', '0', '0', '0', '0'),
+('Cordeiro', 'logo_atividades/cordeiro.png', '800', '700', '800', '800', '800', '800', '800', '800'),
+('Pontuação total', 'logo_atividades/atividade_exemplo.png', '800', '850', '800', '800', '800', '800', '800', '850'),
+('caminho_foto_unidade', 'logo_unidades/logo_exemplo.png', 'logo_unidades/panda.png', 'logo_unidades/aguia_real.png', 'logo_unidades/raposa.png', 'logo_unidades/pantera.png', 'logo_unidades/falcao.png', 'logo_unidades/tigre.png', 'logo_unidades/urso.png', 'logo_unidades/lobo.png');
+
+-- CREATE DA TABELA DE USUARIO
+CREATE TABLE usuario (
+    id_sys INT AUTO_INCREMENT PRIMARY KEY, 
+    nome VARCHAR(50) DEFAULT 'nome_padrao',
+    senha VARCHAR(50) DEFAULT '123',
+    acesso_prova VARCHAR(50) DEFAULT 'nenhum',
+    unidade VARCHAR(50) DEFAULT 'staff'
+);
+
+-- INSERT DA TABELA USUARIO
+INSERT INTO usuario (nome, senha, acesso_prova, unidade) VALUES
+('staff1', '1', 'Quebra Cabeças', 'staff'),
+('staff2', '2', 'Conhece O Uniforme?', 'staff'),
+('staff3', '3', 'Saindo Da Casa De Jó?', 'staff'),
+('staff4', '4', 'Campo Minado', 'staff'),
+('staff5', '5', 'Só De Cabeça', 'staff'),
+('staff6', '6', 'Descubra O Nó', 'staff'),
+('staff7', '7', 'Fogos E Fogões', 'staff'),
+('staff8', '8', 'Escapando Pelas Mãos', 'staff'),
+('staff9', '9', 'Cordeiro', 'staff'),
+('conselheiro1', 'c1', 'nenhum', 'panda'),
+('conselheiro2', 'c2', 'nenhum', 'aguia_real'),
+('conselheiro3', 'c3', 'nenhum', 'raposa'),
+('conselheiro4', 'c4', 'nenhum', 'pantera'),
+('conselheiro5', 'c5', 'nenhum', 'falcao'),
+('conselheiro6', 'c6', 'nenhum', 'tigre'),
+('conselheiro7', 'c7', 'nenhum', 'urso'),
+('conselheiro8', 'c8', 'nenhum', 'lobo'),
+('diretoria', 'at', 'acesso_total', 'diretor');
