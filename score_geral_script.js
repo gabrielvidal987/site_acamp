@@ -1,6 +1,7 @@
 //url do servidor
-const urlServ = 'http://localhost:3000';
+// const urlServ = 'http://localhost:3000';
 // const urlServ = 'http://192.168.1.7:3000';
+const urlServ = 'http://217.77.9.21:3000';
 //variavel do cardscontainer que é a div que ficam os cards
 const cardsContainer = document.getElementById('cards-container');
 //cria a lista de dicionarios contendo info de nome da unidade e pontuação geral pro ranking

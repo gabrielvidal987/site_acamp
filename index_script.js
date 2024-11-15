@@ -2,7 +2,7 @@
 localStorage.clear();
 // Variavel da url do servidor
 // const urlServ = 'http://192.168.1.7:3000';
-const urlServ = 'http://localhost:3000';
+const urlServ = 'http://217.77.9.21:3000';
 //cria o dicionario com os dados das unidades para substituir o nome do bd pelo nome certo de ser exibido
 const converte_nome = {
     "panda": "PANDA",
