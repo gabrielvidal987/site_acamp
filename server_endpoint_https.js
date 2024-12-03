@@ -1,8 +1,11 @@
+const https = require('https');
+const fs = require('fs');
 const express = require('express');
 const mysql = require('mysql2');
 const cors = require('cors');
 const app = express();
 const PORT = 3000;
+const PORT_HTTPS = 3001;
 
 // Configuração da conexão com o banco de dados
 
@@ -10,7 +13,8 @@ const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
     password: 'Vid@l9871',
-    database: 'campestre'
+    // database: 'campestre'
+    database: 'acampestre'
 });
 
 // Conectar ao banco de dados
@@ -165,8 +169,12 @@ app.get('/api/zerar', (req, res) => {
     });
 });
 
-
-// Iniciar o servidor
+// Iniciar o servidor em HTTP
 app.listen(PORT, () => {
-    console.log(`------------Servidor rodando na porta ${PORT}------------`);
+    console.log(`\n------------Servidor HTTP rodando na porta ${PORT}------------`);
 });
+
+https.createServer({
+    cert:fs.readFileSync('SSL/code.crt'),
+    key:fs.readFileSync('SSL/code.key')
+}, app).listen(PORT_HTTPS, ()=>console.log(`\n------------Servidor HTTPS rodando na porta ${PORT_HTTPS}------------`));
